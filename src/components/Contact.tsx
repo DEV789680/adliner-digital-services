@@ -93,7 +93,7 @@ ${message}`
                   </div>
                   <div>
                     <p className="text-sm text-slate-500">Email Us</p>
-                    <p className="text-slate-900 font-medium">hello@adliner.com</p>
+                    <p className="text-slate-900 font-medium">adlinerdigitalservices@gmail.com</p>
                   </div>
                 </div>
 
