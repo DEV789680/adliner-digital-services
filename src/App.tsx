@@ -14,11 +14,11 @@ import { MapSection } from './components/MapSection';
 import { Footer } from './components/Footer';
 import { FloatingSocials } from './components/FloatingSocials';
 import { CaseStudies } from './components/CaseStudies';
-import { CaseStudyPage } from './components/CaseStudyPage'; // 👈 NEW
+import { CaseStudyPage } from './components/CaseStudyPage';
 
 export default function App() {
   return (
-    <Router>
+    <Router basename="/">
       <div className="min-h-screen bg-[#f8f9fb] text-slate-900 font-sans selection:bg-slate-200 selection:text-slate-900 relative">
 
         {/* Background */}
@@ -26,7 +26,7 @@ export default function App() {
 
         <div className="relative z-10">
           
-          {/* Navbar always visible */}
+          {/* Navbar */}
           <Navbar />
 
           <Routes>
@@ -56,8 +56,10 @@ export default function App() {
 
           </Routes>
 
-          {/* Footer always visible */}
+          {/* Footer */}
           <Footer />
+
+          {/* Floating Icons */}
           <FloatingSocials />
 
         </div>
