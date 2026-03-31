@@ -7,27 +7,27 @@ const caseStudies = [
     title: 'Jewellery Brand Growth Campaign',
     category: 'performance marketing',
     result: 'High quality leads & sales boost',
-    image: 'src/assets/jewelleryhero.jpeg',
+    image: '/assets/jewelleryhero.jpeg', // ✅ FIXED
     featured: true,
   },
   {
-  id: 'sk-fit-gym',
-  title: 'SK Fit Gym Growth System',
-  category: 'Performance Marketing',
-  result: '8X Sales Growth',
-  image: 'src/assets/gym.jpeg',
+    id: 'sk-fit-gym',
+    title: 'SK Fit Gym Growth System',
+    category: 'Performance Marketing',
+    result: '8X Sales Growth',
+    image: '/assets/gym.jpeg', // ✅ FIXED
   },
   {
-  id: 'aranya-real-estate',
-  title: 'Real Estate Sales Growth System',
-  category: 'Performance Marketing',
-  result: 'Multi-Project Sales',
-  image: 'src/assets/realestatehero.jpeg',
+    id: 'aranya-real-estate',
+    title: 'Real Estate Sales Growth System',
+    category: 'Performance Marketing',
+    result: 'Multi-Project Sales',
+    image: '/assets/realestatehero.jpeg', // ✅ FIXED
   },
 ];
 
 export function CaseStudies() {
-  const navigate = useNavigate(); // 👈 navigation hook
+  const navigate = useNavigate();
 
   return (
     <section className="py-24 bg-white">
@@ -57,7 +57,7 @@ export function CaseStudies() {
 
           {/* BIG CARD */}
           <motion.div
-            onClick={() => navigate(`/case/${caseStudies[0].id}`)} // 👈 CLICK WORKS
+            onClick={() => navigate(`/case/${caseStudies[0].id}`)}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -84,7 +84,7 @@ export function CaseStudies() {
             {caseStudies.slice(1).map((item, index) => (
               <motion.div
                 key={item.id}
-                onClick={() => navigate(`/case/${item.id}`)} // 👈 CLICK WORKS
+                onClick={() => navigate(`/case/${item.id}`)}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}

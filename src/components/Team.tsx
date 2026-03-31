@@ -5,26 +5,26 @@ const teamMembers = [
   {
     name: 'Ashutosh Sharma',
     role: 'Founder & CEO',
-    image: 'src/assets/ashu.png',
-    position: 'object-[center_10%]', // ✅ FIX CEO framing
-    highlight: true, // ✅ CEO highlight
+    image: '/assets/ashu.png', // ✅ FIXED
+    position: 'object-[center_10%]',
+    highlight: true,
   },
   {
     name: 'Omkar Sharma',
     role: 'Figma Designer + Frontend Developer',
-    image: 'src/assets/omkar.jpeg',
+    image: '/assets/omkar.jpeg', // ✅ FIXED
     position: 'object-center',
   },
   {
     name: 'Paras Raghuvanshi',
     role: 'Chief Technical Officer',
-    image: 'src/assets/paras.jpeg',
+    image: '/assets/paras.jpeg', // ✅ FIXED
     position: 'object-[center_20%]',
   },
   {
     name: 'Divyansh Sharma',
     role: 'Full Stack Developer + UI/UX Designer',
-    image: 'src/assets/divyansh.png',
+    image: '/assets/divyansh.png', // ✅ FIXED
     position: 'object-center',
   },
 ];
@@ -65,40 +65,31 @@ export function Team() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              
               className={`group relative rounded-[2rem] overflow-hidden bg-white transition-all duration-500
               ${member.highlight ? 'scale-105 shadow-xl' : 'shadow-sm hover:shadow-xl'}`}
             >
 
               <div className="aspect-[3/4] w-full overflow-hidden relative">
                 
-                {/* Image FIXED */}
                 <img 
-                  src={member.image} 
-                  alt={member.name} 
+                  src={member.image}
+                  alt={member.name}
                   className={`w-full h-full object-cover ${member.position} transition-transform duration-700 group-hover:scale-105`}
-                  referrerPolicy="no-referrer"
                 />
 
-                {/* Gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-300"></div>
 
-                {/* Content */}
                 <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                  
                   <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
 
-                    {/* Role */}
                     <div className="inline-block px-4 py-1.5 mb-3 text-sm font-medium text-primary-900 bg-white/90 backdrop-blur-md rounded-full shadow-sm">
                       {member.role}
                     </div>
 
-                    {/* Name */}
                     <h3 className="text-2xl font-bold text-white mb-1">
                       {member.name}
                     </h3>
 
-                    {/* Socials */}
                     <div className="flex gap-3 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
                       <a href="#" className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white hover:text-primary-600 transition-colors">
                         <Linkedin size={16} />
@@ -109,7 +100,6 @@ export function Team() {
                     </div>
 
                   </div>
-
                 </div>
 
               </div>

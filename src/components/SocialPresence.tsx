@@ -3,12 +3,12 @@ import { motion } from 'motion/react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const posts = [
-  { id: 1, image: 'src/assets/day1reel.jpeg', link: 'https://www.instagram.com/reel/DMadsQIzbnb/?igsh=MXd4aHc1Z254OWJrOA=='},
-  { id: 2, image: 'src/assets/day2reel.jpeg', link: 'https://www.instagram.com/reel/DMdDoTLTPio/?igsh=MWVqcDN1aTZ3djU5Mw==' },
-  { id: 3, image: 'src/assets/day3reel.jpeg', link: 'https://www.instagram.com/reel/DMfjjdCIDeT/?igsh=ZTU3NmZsbDI2dzlz' },
-  { id: 4, image: 'src/assets/day4reel.jpeg', link: 'https://www.instagram.com/reel/DMkVpb7xAWv/?igsh=N3EzOW9qdzE5Y25i' },
-  { id: 5, image: 'src/assets/day5reel.jpeg', link: 'https://www.instagram.com/reel/DMnDWNGRGDQ/?igsh=MXBnYzFjeWUzZ284Yw==' },
-  { id: 6, image: 'src/assets/day6reel.jpeg', link: 'https://www.instagram.com/reel/DMr6r-csKJG/?igsh=aXp2NDJ4dTl2ejZw' },
+  { id: 1, image: '/assets/day1reel.jpeg', link: 'https://www.instagram.com/reel/DMadsQIzbnb/?igsh=MXd4aHc1Z254OWJrOA=='},
+  { id: 2, image: '/assets/day2reel.jpeg', link: 'https://www.instagram.com/reel/DMdDoTLTPio/?igsh=MWVqcDN1aTZ3djU5Mw==' },
+  { id: 3, image: '/assets/day3reel.jpeg', link: 'https://www.instagram.com/reel/DMfjjdCIDeT/?igsh=ZTU3NmZsbDI2dzlz' },
+  { id: 4, image: '/assets/day4reel.jpeg', link: 'https://www.instagram.com/reel/DMkVpb7xAWv/?igsh=N3EzOW9qdzE5Y25i' },
+  { id: 5, image: '/assets/day5reel.jpeg', link: 'https://www.instagram.com/reel/DMnDWNGRGDQ/?igsh=MXBnYzFjeWUzZ284Yw==' },
+  { id: 6, image: '/assets/day6reel.jpeg', link: 'https://www.instagram.com/reel/DMr6r-csKJG/?igsh=aXp2NDJ4dTl2ejZw' },
 ];
 
 export function SocialPresence() {
@@ -17,7 +17,6 @@ export function SocialPresence() {
   const next = () => setIndex((prev) => (prev + 1) % posts.length);
   const prev = () => setIndex((prev) => (prev - 1 + posts.length) % posts.length);
 
-  // AUTO SLIDE
   useEffect(() => {
     const interval = setInterval(() => {
       next();
@@ -33,7 +32,6 @@ export function SocialPresence() {
         Trusted by 4000+ People
       </h2>
 
-      {/* CAROUSEL */}
       <div className="relative h-[540px] flex items-center justify-center overflow-hidden">
 
         {posts.map((post, i) => {
@@ -83,7 +81,6 @@ export function SocialPresence() {
         })}
       </div>
 
-      {/* CONTROLS */}
       <div className="flex items-center justify-center gap-6 mt-12">
 
         <button
@@ -93,7 +90,6 @@ export function SocialPresence() {
           <ChevronLeft />
         </button>
 
-        {/* DOTS */}
         <div className="flex gap-2">
           {posts.map((_, i) => (
             <div

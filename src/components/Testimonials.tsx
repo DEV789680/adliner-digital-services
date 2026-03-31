@@ -4,22 +4,22 @@ import { useState, useEffect } from 'react';
 
 const videoTestimonials = [
   {
-    name: 'Siddharth ',
+    name: 'Siddharth',
     role: 'Bhuvika Blue LLP',
-    video: 'src/assets/siddharthvideo.mp4',
-    thumbnail: 'src/assets/siddharthphoto.jpeg',
+    video: '/assets/siddharthvideo.mp4', // ✅ FIXED
+    thumbnail: '/assets/siddharthphoto.jpeg', // ✅ FIXED
   },
   {
     name: 'Vivek Rajput',
     role: 'Real Estate',
-    video: 'src/assets/vivekrajputvideo.mp4',
-    thumbnail: 'src/assets/vivekphoto.jpeg',
+    video: '/assets/vivekrajputvideo.mp4', // ✅ FIXED
+    thumbnail: '/assets/vivekphoto.jpeg', // ✅ FIXED
   },
   {
     name: 'Vipin Sharma',
     role: 'Blue IMF Private Limited',
-    video: 'src/assets/vipinsharmavideo.mp4',
-    thumbnail: 'src/assets/vipinphoto.jpeg',
+    video: '/assets/vipinsharmavideo.mp4', // ✅ FIXED
+    thumbnail: '/assets/vipinphoto.jpeg', // ✅ FIXED
   },
   {
     name: 'Ajay Agarwal',
@@ -32,7 +32,6 @@ const videoTestimonials = [
 export function Testimonials() {
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
 
-  // ESC key close
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setActiveVideo(null);
@@ -47,14 +46,12 @@ export function Testimonials() {
 
       <div className="max-w-6xl mx-auto px-6 md:px-10">
 
-        {/* Heading */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-5xl font-bold text-slate-900">
             Happy Clients <span className="text-blue-600">Testimonials</span>
           </h2>
         </div>
 
-        {/* Video Cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
 
           {videoTestimonials.map((item, index) => (
@@ -75,17 +72,14 @@ export function Testimonials() {
                   className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                 />
 
-                {/* Dark Overlay */}
                 <div className="absolute inset-0 bg-black/30"></div>
 
-                {/* Play Button */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition">
                     <Play className="text-black w-6 h-6 ml-1" />
                   </div>
                 </div>
 
-                {/* Bottom Info */}
                 <div className="absolute bottom-0 p-4">
                   <h4 className="text-white font-semibold text-sm">
                     {item.name}
@@ -102,7 +96,7 @@ export function Testimonials() {
         </div>
       </div>
 
-      {/* 🎬 VIDEO MODAL */}
+      {/* VIDEO MODAL */}
       <AnimatePresence>
         {activeVideo && (
           <motion.div
@@ -110,18 +104,17 @@ export function Testimonials() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setActiveVideo(null)} // click outside
+            onClick={() => setActiveVideo(null)}
           >
 
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
-              onClick={(e) => e.stopPropagation()} // prevent closing inside
+              onClick={(e) => e.stopPropagation()}
               className="relative w-full max-w-xl md:max-w-2xl bg-black rounded-2xl overflow-hidden"
             >
 
-              {/* Close Button */}
               <button
                 onClick={() => setActiveVideo(null)}
                 className="absolute top-3 right-3 z-10 bg-white/90 rounded-full px-3 py-1 text-black font-bold hover:bg-white transition"
@@ -129,7 +122,6 @@ export function Testimonials() {
                 ✕
               </button>
 
-              {/* Video */}
               <video
                 src={activeVideo}
                 controls
