@@ -31,7 +31,7 @@ export function Hero() {
           className="mb-0"
         >
           <img
-            src="src/assets/ashu.png"
+            src="/assets/ashu.png"   
             alt="Founder"
             className="w-[220px] md:w-[280px] lg:w-[320px] mx-auto object-contain drop-shadow-2xl"
             style={{
@@ -51,7 +51,7 @@ export function Hero() {
             font-display font-bold 
             tracking-tight text-slate-900 
             max-w-4xl 
-            -mt-10 md:-mt-16   /* 👈 MAGIC */
+            -mt-10 md:-mt-16
             relative z-20
           "
         >
@@ -92,6 +92,7 @@ export function Hero() {
                 key={i}
                 src={`https://i.pravatar.cc/100?img=${i + 10}`}
                 className="w-10 h-10 rounded-full border-2 border-[#f8f9fb]"
+                alt="client"
               />
             ))}
           </div>
