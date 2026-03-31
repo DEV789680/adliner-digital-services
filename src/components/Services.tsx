@@ -6,20 +6,20 @@ const services = [
     title: 'Performance Marketing',
     description: 'Drive scalable growth with data-driven ad strategies across Meta, Google, and more. We focus on maximizing ROI through continuous optimization, targeting, and performance tracking.',
     icon: Smartphone,
-    image: 'src/assets/performancemarketing.jpeg'
+    image: '/assets/performancemarketing.jpeg', // ✅ FIXED
   },
   {
     title: 'App & Web Development',
     description: 'We build fast, responsive, and conversion-focused websites and applications designed to scale your business and deliver seamless user experiences.',
     icon: Monitor,
-    image: 'src/assets/app&web.jpeg'
+    image: '/assets/app&web.jpeg', // ✅ FIXED
   },
   {
     title: 'Google Ads',
     description: 'Launch and scale profitable campaigns with precision targeting and smart bidding strategies that generate high-quality leads and consistent results.',
     icon: Cloud,
-    image: 'src/assets/googleads.jpeg'
-  }
+    image: '/assets/googleads.jpeg', // ✅ FIXED
+  },
 ];
 
 export function Services() {
@@ -54,11 +54,10 @@ export function Services() {
                 src={service.image}
                 alt={service.title}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                referrerPolicy="no-referrer"
               />
             </div>
 
-            {/* Gradient Overlay (stronger for readability) */}
+            {/* Gradient */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
 
             {/* Icon */}
@@ -66,23 +65,19 @@ export function Services() {
               <service.icon size={20} className="text-slate-900" />
             </div>
 
-            {/* 🔥 CONTENT (PERFECT BOTTOM ALIGN) */}
+            {/* Content */}
             <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
-
               <div className="transition-all duration-500 ease-out translate-y-6 group-hover:translate-y-0">
 
-                {/* Title */}
                 <h3 className="text-white text-xl font-bold mb-2">
                   {service.title}
                 </h3>
 
-                {/* Description */}
                 <p className="text-white/80 text-sm leading-relaxed opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-40 transition-all duration-500">
                   {service.description}
                 </p>
 
               </div>
-
             </div>
 
           </motion.div>
