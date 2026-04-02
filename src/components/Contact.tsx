@@ -8,7 +8,7 @@ export function Contact() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const form = e.target;
@@ -16,45 +16,45 @@ export function Contact() {
 
     const name = data.get('name');
     const email = data.get('email');
+    const phone = data.get('phone');
     const service = data.get('service');
     const message = data.get('message');
 
-    // 🔥 Gmail
+    setLoading(true);
+
+    // ✅ SEND TO GOOGLE SHEETS
+    try {
+      await fetch('https://script.google.com/macros/s/AKfycbwvcWf7poArYyVsDZC7A6tg1127DbHyWB5lNt6X2jTt2Fl3N5ewdrd6DR0ekW67sibsKQ/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          service,
+          message,
+        }),
+      });
+    } catch (error) {
+      console.error('Error saving to sheet:', error);
+    }
+
+    // ✅ OPEN GMAIL
     const subject = encodeURIComponent(`New Inquiry from ${name}`);
     const body = encodeURIComponent(
 `Name: ${name}
 Email: ${email}
+Phone: ${phone}
 Service: ${service}
 
 Message:
 ${message}`
     );
 
-    const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=hello@adliner.com&su=${subject}&body=${body}`;
-
-    // 🔥 WhatsApp
-    const whatsappMsg = encodeURIComponent(
-`Hi, I'm ${name}
-Email: ${email}
-Service: ${service}
-
-${message}`
-    );
-
-    const whatsappLink = `https://wa.me/919399414394?text=${whatsappMsg}`;
-
-    // 👉 Open Gmail + WhatsApp
-    window.open(gmailLink, '_blank');
-    window.open(whatsappLink, '_blank');
-
-    // 🔥 Backup Formspree
-    setLoading(true);
-
-    await fetch('https://formspree.io/f/xyzabcd', {
-      method: 'POST',
-      body: data,
-      headers: { Accept: 'application/json' },
-    });
+    window.open(`mailto:adlinerdigitalservices@gmail.com?subject=${subject}&body=${body}`);
 
     setSuccess(true);
     form.reset();
@@ -62,178 +62,89 @@ ${message}`
   };
 
   return (
-    <section id="contact" className="py-24 relative bg-white">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="glass-card rounded-[2.5rem] p-8 md:p-16 overflow-hidden relative">
+    <section id="contact" className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
 
-          {/* Glow */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-primary-100 rounded-full blur-[100px] -z-10"></div>
+          {/* LEFT */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+          >
+            <h2 className="text-4xl font-bold mb-6">
+              Let's build something <span className="text-blue-600">extraordinary.</span>
+            </h2>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            <div className="space-y-6 mt-10">
+              <div className="flex gap-3"><Mail /> adlinerdigitalservices@gmail.com</div>
+              <div className="flex gap-3"><Phone /> +91 9752014394</div>
+              <div className="flex gap-3"><MapPin /> Fourth Floor, 187-A, near Milan Resturant, Zone-I, Maharana Pratap Nagar, Bhopal, Madhya Pradesh 462011</div>
+            </div>
+          </motion.div>
 
-            {/* LEFT SIDE */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-4xl md:text-6xl font-display font-bold mb-6 text-slate-900">
-                Let's build something <span className="text-gradient-primary">extraordinary.</span>
-              </h2>
+          {/* RIGHT FORM */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+          >
 
-              <p className="text-slate-600 text-lg mb-12 max-w-md">
-                Ready to scale your brand? Fill out the form and our team will get back to you within 24 hours.
-              </p>
+            {success ? (
+              <div className="text-green-600 text-xl">✅ Message Sent</div>
+            ) : (
 
-              <div className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit}>
 
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-primary-50 flex items-center justify-center text-primary-600 shadow-sm">
-                    <Mail size={20} />
-                  </div>
-                  <div>
-                    <p className="text-sm text-slate-500">Email Us</p>
-                    <p className="text-slate-900 font-medium">adlinerdigitalservices@gmail.com</p>
-                  </div>
+                <input name="name" required placeholder="Name" className="border p-3 w-full rounded-xl" />
+                <input name="email" required type="email" placeholder="Email" className="border p-3 w-full rounded-xl" />
+                <input name="phone" required placeholder="Phone" className="border p-3 w-full rounded-xl" />
+
+                <select name="service" required className="border p-3 w-full rounded-xl">
+                  <option value="">Select service</option>
+                  <option>Marketing</option>
+                  <option>Ads</option>
+                  <option>Website Development</option>
+                  <option>App Development</option>
+                </select>
+
+                <textarea name="message" required placeholder="Message" className="border p-3 w-full rounded-xl" />
+
+                <div className="flex gap-4">
+
+                  <button type="submit" className="bg-blue-600 text-white px-6 py-3 rounded-xl">
+                    {loading ? 'Sending...' : 'Send'}
+                  </button>
+
+                  {/* ✅ FIXED WHATSAPP */}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const form = document.querySelector('form');
+                      const data = new FormData(form);
+
+                      const whatsappMsg = encodeURIComponent(
+`Hi, I'm ${data.get('name')}
+Email: ${data.get('email')}
+Phone: ${data.get('phone')}
+Service: ${data.get('service')}
+
+${data.get('message')}`
+                      );
+
+                      window.open(`https://wa.me/919752014394?text=${whatsappMsg}`);
+                    }}
+                    className="bg-green-500 text-white px-6 py-3 rounded-xl"
+                  >
+                    WhatsApp
+                  </button>
+
                 </div>
 
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-primary-50 flex items-center justify-center text-primary-600 shadow-sm">
-                    <Phone size={20} />
-                  </div>
-                  <div>
-                    <p className="text-sm text-slate-500">Call Us</p>
-                    <p className="text-slate-900 font-medium">+91 9399414394</p>
-                  </div>
-                </div>
+              </form>
 
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-primary-50 flex items-center justify-center text-primary-600 shadow-sm">
-                    <MapPin size={20} />
-                  </div>
-                  <div>
-                    <p className="text-sm text-slate-500">Visit Us</p>
-                    <p className="text-slate-900 font-medium">
-                      Fourth Floor, 187-A, near Milan Resturant, Zone-I, Maharana Pratap Nagar, Bhopal, Madhya Pradesh 462011
-                    </p>
-                  </div>
-                </div>
+            )}
 
-              </div>
+          </motion.div>
 
-            </motion.div>
-
-            {/* RIGHT FORM */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className="space-y-6">
-
-                {success ? (
-                  <div className="text-center py-10">
-                    <h3 className="text-2xl font-bold text-green-600 mb-2">
-                      ✅ Message Sent!
-                    </h3>
-                    <p className="text-slate-600">
-                      We'll contact you within 24 hours.
-                    </p>
-                  </div>
-                ) : (
-
-                  <form className="space-y-6" onSubmit={handleSubmit}>
-
-                    <input type="hidden" name="_subject" value="New Client Inquiry!" />
-
-                    {/* INPUTS */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-
-                      <input 
-                        name="name"
-                        required
-                        placeholder="Full Name"
-                        className="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all shadow-sm"
-                      />
-
-                      <input 
-                        name="email"
-                        type="email"
-                        required
-                        placeholder="Email Address"
-                        className="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all shadow-sm"
-                      />
-
-                    </div>
-
-                    <select 
-                      name="service"
-                      required
-                      className="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all shadow-sm"
-                    >
-                      <option value="">Select a service...</option>
-                      <option>Social Media Marketing</option>
-                      <option>Performance Ads</option>
-                      <option>Website Development</option>
-                      <option>SEO Optimization</option>
-                      <option>Branding</option>
-                    </select>
-
-                    <textarea 
-                      name="message"
-                      required
-                      rows={4}
-                      placeholder="Tell us about your goals..."
-                      className="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 resize-none transition-all shadow-sm"
-                    />
-
-                    {/* BUTTONS */}
-                    <div className="flex flex-col sm:flex-row gap-4">
-
-                      <button 
-                        type="submit"
-                        disabled={loading}
-                        className="w-full py-4 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-xl transition shadow-md hover:shadow-lg"
-                      >
-                        {loading ? 'Opening...' : 'Send via Gmail'}
-                      </button>
-
-                      <button
-                        type="button"
-                        onClick={() => {
-                          const form = document.querySelector('form') as HTMLFormElement;
-                          const data = new FormData(form);
-
-                          const name = data.get('name');
-                          const email = data.get('email');
-                          const service = data.get('service');
-                          const message = data.get('message');
-
-                          const whatsappMsg = encodeURIComponent(
-`Hi, I'm ${name}
-Email: ${email}
-Service: ${service}
-
-${message}`
-                          );
-
-                          window.open(`https://wa.me/919399414394?text=${whatsappMsg}`, '_blank');
-                        }}
-                        className="w-full py-4 bg-green-500 hover:bg-green-600 text-white font-medium rounded-xl transition shadow-md hover:shadow-lg"
-                      >
-                        Chat on WhatsApp
-                      </button>
-
-                    </div>
-
-                  </form>
-
-                )}
-
-              </div>
-            </motion.div>
-
-          </div>
         </div>
       </div>
     </section>
