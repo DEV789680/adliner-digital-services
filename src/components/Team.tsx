@@ -12,7 +12,7 @@ const teamMembers = [
   {
     name: 'Omkar Sharma',
     role: 'Figma Designer + Frontend Developer',
-    image: '/assets/omkar.jpeg', // ✅ FIXED
+    image: '/assets/omkar.png', // ✅ FIXED
     position: 'object-center',
   },
   {
