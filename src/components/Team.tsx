@@ -24,7 +24,7 @@ const teamMembers = [
   {
     name: 'Divyansh Sharma',
     role: 'Full Stack Developer + UI/UX Designer',
-    image: '/assets/divyansh.png', // ✅ FIXED
+    image: '/assets/divyansh.jpeg', // ✅ FIXED
     position: 'object-center',
   },
 ];
