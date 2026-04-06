@@ -33,7 +33,7 @@ export function AboutFounder() {
         className="flex flex-col items-center text-center"
       >
         <p className="text-lg text-slate-600 leading-relaxed mb-10 max-w-2xl">
-          Ashutosh is a performance marketing expert specializing in Meta Ads and influencer marketing...
+          Ashutosh is a performance marketing expert specializing in Meta Ads and influencer marketing. He helps businesses grow by creating high-converting ad campaigns and leveraging the right influencers to build trust and drive sales. His focus is on delivering real results more leads, more conversions, and better ROI through smart, data-driven strategies.
         </p>
 
         {/* Goals */}
