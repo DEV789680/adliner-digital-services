@@ -1,6 +1,11 @@
+'use client';
+
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X } from 'lucide-react';
+
+// ✅ IMPORT YOUR LOGO
+import logo from '/assets/logo.png';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -51,12 +56,17 @@ export function Navbar() {
           ))}
         </nav>
 
-        {/* Center Logo */}
+        {/* ✅ CENTER LOGO + TEXT */}
         <a
           href="#"
-          className="text-lg md:text-xl font-display font-bold tracking-tight text-slate-900 text-center flex-shrink-0"
+          className="flex items-center gap-2 text-lg md:text-xl font-display font-bold tracking-tight text-slate-900 text-center flex-shrink-0"
         >
-          Adliner Digital Services
+          <img
+            src={logo}
+            alt="Adliner Logo"
+            className="w-8 h-8 md:w-9 md:h-9 object-contain"
+          />
+          <span>Adliner</span>
         </a>
 
         {/* Right Nav */}

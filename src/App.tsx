@@ -26,7 +26,7 @@ export default function App() {
 
         <div className="relative z-10">
           
-          {/* Navbar */}
+          {/* ✅ Navbar (Logo should be added INSIDE this component) */}
           <Navbar />
 
           <Routes>
