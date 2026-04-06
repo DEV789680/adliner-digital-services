@@ -18,13 +18,13 @@ const teamMembers = [
   {
     name: 'Paras Raghuvanshi',
     role: 'Chief Technical Officer',
-    image: '/assets/paras.jpeg', // ✅ FIXED
+    image: '/assets/paras.png', // ✅ FIXED
     position: 'object-[center_20%]',
   },
   {
     name: 'Divyansh Sharma',
     role: 'Full Stack Developer + UI/UX Designer',
-    image: '/assets/divyansh.jpeg', // ✅ FIXED
+    image: '/assets/divyansh.png', // ✅ FIXED
     position: 'object-center',
   },
 ];
