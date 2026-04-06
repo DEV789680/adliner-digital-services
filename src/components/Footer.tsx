@@ -7,9 +7,14 @@ export function Footer() {
           {/* Logo + About */}
           <div className="lg:col-span-1">
             <a href="#" className="text-2xl font-display font-bold tracking-tighter text-slate-900 flex items-center gap-2 mb-6">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-indigo-600 flex items-center justify-center shadow-md shadow-primary-500/20">
-                <span className="text-white text-lg font-bold">A</span>
-              </div>
+              
+              {/* ✅ LOGO REPLACED */}
+              <img
+                src="/assets/logo.png"
+                alt="Adliner Logo"
+                className="w-8 h-8 object-contain"
+              />
+
               Adliner
             </a>
 
@@ -35,7 +40,7 @@ export function Footer() {
 
               {/* LinkedIn */}
               <a
-                href="https://www.linkedin.com/in/ashutosh-sharma-557a701a5?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
+                href="https://www.linkedin.com/in/ashutosh-sharma-557a701a5"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-500 hover:text-primary-600 hover:border-primary-200 transition-all shadow-sm"
@@ -48,15 +53,15 @@ export function Footer() {
 
               {/* Instagram */}
               <a
-               href="https://www.instagram.com/adlinerdigitalservices?igsh=MXJpamF4eGxtcWs2bA=="
-               target="_blank"
-               rel="noopener noreferrer"
-               className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-500 hover:text-primary-600 hover:border-primary-200 transition-all shadow-sm"
+                href="https://www.instagram.com/adlinerdigitalservices"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-500 hover:text-primary-600 hover:border-primary-200 transition-all shadow-sm"
               >
-               <span className="sr-only">Instagram</span>
-               < svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <span className="sr-only">Instagram</span>
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path fillRule="evenodd" d="M7.75 2C4.574 2 2 4.574 2 7.75v8.5C2 19.426 4.574 22 7.75 22h8.5C19.426 22 22 19.426 22 16.25v-8.5C22 4.574 19.426 2 16.25 2h-8.5zm0 1.5h8.5A4.25 4.25 0 0120.5 7.75v8.5A4.25 4.25 0 0116.25 20.5h-8.5A4.25 4.25 0 013.5 16.25v-8.5A4.25 4.25 0 017.75 3.5zm4.25 3a5.25 5.25 0 100 10.5 5.25 5.25 0 000-10.5zm0 1.5a3.75 3.75 0 110 7.5 3.75 3.75 0 010-7.5zm5.25-.75a1.125 1.125 0 11-2.25 0 1.125 1.125 0 012.25 0z" clipRule="evenodd" />
-               </svg>
+                </svg>
               </a>
 
             </div>
