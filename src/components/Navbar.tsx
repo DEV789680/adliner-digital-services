@@ -63,7 +63,7 @@ export function Navbar() {
             alt="Adliner Logo"
             className="w-8 h-8 md:w-9 md:h-9 object-contain"
           />
-          <span>Adliner</span>
+          <span>Adliner Digital Services</span>
         </a>
 
         {/* RIGHT NAV */}
