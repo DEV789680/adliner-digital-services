@@ -5,7 +5,7 @@ const caseStudies = [
   {
     id: 'jewellery-growth',
     title: 'Jewellery Brand Growth Campaign',
-    category: 'performance marketing',
+    category: 'Performance Marketing',
     result: 'High quality leads & sales boost',
     image: '/assets/jewelleryhero.jpeg', // ✅ FIXED
     featured: true,
