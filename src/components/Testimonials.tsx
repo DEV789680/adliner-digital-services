@@ -11,7 +11,7 @@ const videoTestimonials = [
   },
   {
     name: 'Vivek Rajput',
-    role: 'Real Estate',
+    role: 'Bhavani Construction',
     video: '/assets/vivekrajputvideo.mp4',
     thumbnail: '/assets/vivekphoto.jpeg',
   },
