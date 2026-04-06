@@ -6,27 +6,21 @@ const videoTestimonials = [
   {
     name: 'Siddharth',
     role: 'Bhuvika Blue LLP',
-    video: '/assets/siddharthvideo.mp4', // ✅ FIXED
-    thumbnail: '/assets/siddharthphoto.jpeg', // ✅ FIXED
+    video: '/assets/siddharthvideo.mp4',
+    thumbnail: '/assets/siddharthphoto.jpeg',
   },
   {
     name: 'Vivek Rajput',
     role: 'Real Estate',
-    video: '/assets/vivekrajputvideo.mp4', // ✅ FIXED
-    thumbnail: '/assets/vivekphoto.jpeg', // ✅ FIXED
+    video: '/assets/vivekrajputvideo.mp4',
+    thumbnail: '/assets/vivekphoto.jpeg',
   },
   {
     name: 'Vipin Sharma',
     role: 'Blue IMF Private Limited',
-    video: '/assets/vipinsharmavideo.mp4', // ✅ FIXED
-    thumbnail: '/assets/vipinphoto.jpeg', // ✅ FIXED
-  },
-  {
-    name: 'Ajay Agarwal',
-    role: 'AVEENA CO-FOUNDER',
-    video: 'https://www.w3schools.com/html/mov_bbb.mp4',
-    thumbnail: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e',
-  },
+    video: '/assets/vipinsharmavideo.mp4',
+    thumbnail: '/assets/vipinphoto.jpeg',
+  }
 ];
 
 export function Testimonials() {
@@ -52,7 +46,8 @@ export function Testimonials() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        {/* ✅ AUTO GRID (now only 3 items) */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
 
           {videoTestimonials.map((item, index) => (
             <motion.div
