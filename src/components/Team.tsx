@@ -19,7 +19,7 @@ const teamMembers = [
     name: 'Paras Raghuvanshi',
     role: 'Chief Technical Officer',
     image: '/assets/paras.png', // ✅ FIXED
-    position: 'object-[center_60%]',
+    position: 'object-[center_70%]',
   },
   {
     name: 'Divyansh Sharma',
