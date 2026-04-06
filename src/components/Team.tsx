@@ -6,7 +6,7 @@ const teamMembers = [
     name: 'Ashutosh Sharma',
     role: 'Founder & CEO',
     image: '/assets/ashu.jpeg', // ✅ FIXED
-    position: 'object-[center_5%]',
+    position: 'object-[center_1%]',
     highlight: true,
   },
   {
