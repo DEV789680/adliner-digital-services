@@ -4,9 +4,6 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X } from 'lucide-react';
 
-// ✅ IMPORT YOUR LOGO
-import logo from '/assets/logo.png';
-
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -43,7 +40,7 @@ export function Navbar() {
         }`}
       >
 
-        {/* Left Nav */}
+        {/* LEFT NAV */}
         <nav className="hidden md:flex items-center gap-6 flex-1">
           {navLinksLeft.map((link) => (
             <a
@@ -56,20 +53,20 @@ export function Navbar() {
           ))}
         </nav>
 
-        {/* ✅ CENTER LOGO + TEXT */}
+        {/* ✅ CENTER LOGO + BRAND */}
         <a
-          href="#"
-          className="flex items-center gap-2 text-lg md:text-xl font-display font-bold tracking-tight text-slate-900 text-center flex-shrink-0"
+          href="/"
+          className="flex items-center gap-2 text-lg md:text-xl font-bold tracking-tight text-slate-900 text-center flex-shrink-0"
         >
           <img
-            src={logo}
+            src="/assets/logo.png"   // ✅ FIXED (NO IMPORT)
             alt="Adliner Logo"
             className="w-8 h-8 md:w-9 md:h-9 object-contain"
           />
           <span>Adliner</span>
         </a>
 
-        {/* Right Nav */}
+        {/* RIGHT NAV */}
         <nav className="hidden md:flex items-center justify-end gap-6 flex-1">
           {navLinksRight.map((link) => (
             <a
@@ -82,7 +79,7 @@ export function Navbar() {
           ))}
         </nav>
 
-        {/* Mobile Menu Button */}
+        {/* MOBILE BUTTON */}
         <button
           className="md:hidden text-slate-600 hover:text-slate-900 ml-auto"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -91,7 +88,7 @@ export function Navbar() {
         </button>
       </motion.div>
 
-      {/* Mobile Menu */}
+      {/* MOBILE MENU */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
