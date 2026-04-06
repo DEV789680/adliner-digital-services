@@ -31,7 +31,7 @@ export function Hero() {
           className="mb-0"
         >
           <img
-            src="/assets/ashu.png"   
+            src="/assets/ashutosh.png"   
             alt="Founder"
             className="w-[220px] md:w-[280px] lg:w-[320px] mx-auto object-contain drop-shadow-2xl"
             style={{
